@@ -60,8 +60,10 @@ class TestGetBirthdaysPerWeek(unittest.TestCase):
         """
         date_mock.today.return_value = self.today.date()
         users = [
-            {"name": "John", "birthday": (self.today - timedelta(days=10)).date()},
-            {"name": "Doe", "birthday": (self.today - timedelta(days=20)).date()},
+            {"name": "John", "birthday": (
+                self.today - timedelta(days=10)).date()},
+            {"name": "Doe", "birthday": (
+                self.today - timedelta(days=20)).date()},
         ]
         result = get_birthdays_per_week(users)
         expected = {}
@@ -97,7 +99,8 @@ class TestGetBirthdaysPerWeek(unittest.TestCase):
                 "name": "Doe",
                 "birthday": (self.today + timedelta(days=6)).date(),
             },
-            {"name": "Alice", "birthday": (self.today + timedelta(days=3)).date()},
+            {"name": "Alice", "birthday": (
+                self.today + timedelta(days=3)).date()},
         ]
         result = get_birthdays_per_week(users)
         expected = {"Monday": ["John", "Doe"], "Friday": ["Alice"]}
@@ -149,7 +152,8 @@ class TestGetBirthdaysPerWeek(unittest.TestCase):
                 "name": "Doe",
                 "birthday": (self.today + timedelta(days=3)).date(),
             },
-            {"name": "Alice", "birthday": (self.today + timedelta(days=-3)).date()},
+            {"name": "Alice", "birthday": (
+                self.today + timedelta(days=-3)).date()},
         ]
         result = get_birthdays_per_week(users)
         expected = {"Wednesday": ["John"], "Friday": ["Doe"]}
